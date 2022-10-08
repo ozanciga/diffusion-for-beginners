@@ -25,7 +25,7 @@
 
 <table>
  <tr>
-    <td><img src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' height="256" width="256"></td>
+    <td><img src='images/ddim.jpg' height="256" width="256"></td>
     <td><img src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' height="256" width="256"></td>
  </tr>
  <tr>
