@@ -65,3 +65,9 @@ and replace the inner loop for generate_sample.py as:
 for t in tqdm(sampler.timesteps):
     latents = sampler(latents, t, text_embeddings, guidance_scale)
 ```
+
+## soft-diffusion
+
+a sketch/draft of google's new paper, [soft diffusion: score matching for general corruptions](https://arxiv.org/abs/2209.05442), which achieves state-of-the-art results on celeba-64 dataset.
+
+details can be found [here](soft_diffusion)
