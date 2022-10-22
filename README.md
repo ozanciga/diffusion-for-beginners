@@ -1,6 +1,9 @@
 # diffusion for beginners
 
-- implementation of _diffusion schedulers_ (currently sampling only) with minimal code & as faithful to the original work as i could. most recent work reuse or adopt code from previous work and build on it, or transcribe code from another framework - which is great! but i found it hard to follow at times. this is an attempt at simplifying below great papers. the trade-off is made between stability and correctness vs. brevity and simplicity. 
+- implementation of _diffusion schedulers_ (currently sampling only) with minimal code & as faithful to the original work as i could. most recent work reuse or adopt code from previous work and build on it, or transcribe code from another framework - which is great! but i found it hard to follow at times. this is an attempt at simplifying below great papers. the trade-off is made between stability and correctness vs. brevity and simplicity.
+
+<p style="color: lightgreen; font-weight: bold;">feel free to contribute to the list below!</p>
+
 
 - [x] [ddpm](samplers/ddpm.py) (ho et al. 2020), denoising diffusion probabilistic models, https://arxiv.org/abs/2006.11239
 - [x] [improved ddpm](samplers/ddpm.py) (nichol and dhariwal 2021), improved denoising diffusion probabilistic models,https://arxiv.org/abs/2102.09672
@@ -8,7 +11,7 @@
 - [x] [pndm](samplers/pndm.py) (ho et al. 2020), pseudo numerical methods for diffusion models, https://arxiv.org/abs/2202.09778
 - [x] [heun](samplers/heun.py) (karras et al. 2020), elucidating the design space of diffusion-based generative models, https://arxiv.org/abs/2206.00364
 - [x] [dpm-solver](samplers/dpm_solver.py) (lu et al. 2022), dpm-solver: a fast ode solver for diffusion probabilistic model sampling in around 10 steps, https://arxiv.org/abs/2206.00927
-
+- [x] [exponential integrator](samplers/exponential_integrator.py) (zhang et al. 2022), fast sampling of diffusion models with exponential integrator, https://arxiv.org/abs/2204.13902
 
 
 
@@ -50,6 +53,18 @@
 </table>
 
 
+<table>
+ <tr>
+    <td><img src='images/exponential_integrator.jpg' height="256" width="256"></td>
+    <td><img src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' height="256" width="256"></td>
+ </tr>
+ <tr>
+   <td><b style="font-size:20px">exponential integrator</b></td>
+   <td><b style="font-size:20px">what next?</b></td>
+ </tr>
+</table>
+
+
 ### * requirements *
 while this repository is intended to be educational, if you wish to run and experiment, you'll need to obtain a [token from huggingface](https://huggingface.co/docs/hub/security-tokens) (and paste it to generate_sample.py), and install their excellent [diffusers library](https://github.com/huggingface/diffusers)
 
@@ -73,6 +88,13 @@ similarly, for dpm-solver-2,
 ```python
     sampler = DPMSampler(num_sample_steps=20, denoiser=pipe.unet)
     init_latents = torch.randn(batch_size, 4, 64, 64).to(device) * sampler.lmbd(1)[1]
+```
+
+and, for fast exponential integrator,
+
+```python
+    sampler = ExponentialSampler(num_sample_steps=50, denoiser=pipe.unet)
+    init_latents = torch.randn(batch_size, 4, 64, 64).to(device)
 ```
 
 ## soft-diffusion
