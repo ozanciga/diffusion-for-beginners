@@ -41,8 +41,6 @@ class ExponentialSampler:
             self.log_alpha(np.linspace(0, 1, self.num_train_timesteps+1), schedule='linear'))
 
         from scipy.misc import derivative
-        # dt = 0.0001
-        # G = lambda tau: np.sqrt(-(log_alpha_fn(tau+dt)-log_alpha_fn(tau-dt))/(2*dt))
         G = lambda tau: np.sqrt(-derivative(log_alpha_fn, tau, dx=1e-5))
         L = lambda tau: np.sqrt(1-np.exp(log_alpha_fn(tau)))
 
