@@ -5,6 +5,7 @@
 
 $$\large{\mathbf{{\color{green}feel\ free\ to\ contribute\ to\ the\ list\ below!}}}$$
 
+- [x] [dpm-solver++(2m)](samplers/dpmsolverplusplus.py) (lu et al. 2022), dpm-solver++: fast solver for guided sampling of diffusion probabilistic models, https://arxiv.org/abs/2211.01095
 - [x] [exponential integrator](samplers/exponential_integrator.py) (zhang et al. 2022), fast sampling of diffusion models with exponential integrator, https://arxiv.org/abs/2204.13902
 - [x] [dpm-solver](samplers/dpm_solver.py) (lu et al. 2022), dpm-solver: a fast ode solver for diffusion probabilistic model sampling in around 10 steps, https://arxiv.org/abs/2206.00927
 - [x] [heun](samplers/heun.py) (karras et al. 2020), elucidating the design space of diffusion-based generative models, https://arxiv.org/abs/2206.00364
@@ -21,11 +22,11 @@ $$\large{\mathbf{{\color{green}feel\ free\ to\ contribute\ to\ the\ list\ below!
 <table>
  <tr>
     <td><img src='images/exponential_integrator.jpg' height="256" width="256"></td>
-    <td><img src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' height="256" width="256"></td>
+    <td><img src='images/dpmsolverplusplus.jpg' height="256" width="256"></td>
  </tr>
  <tr>
    <td><b style="font-size:20px">exponential integrator</b></td>
-   <td><b style="font-size:20px">what next?</b></td>
+   <td><b style="font-size:20px">dpm-solver++</b></td>
  </tr>
 </table>
 
@@ -95,6 +96,13 @@ and, for fast exponential integrator,
 ```python
     sampler = ExponentialSampler(num_sample_steps=50, denoiser=pipe.unet)
     init_latents = torch.randn(batch_size, 4, 64, 64).to(device)
+```
+
+and, for dpm-solver++ (2m),
+
+```python
+    sampler = DPMPlusPlusSampler(denoiser=pipe.unet, num_sample_steps=20)
+    init_latents = torch.randn(batch_size, 4, 64, 64).to(device) * sampler.get_coeffs(sampler.t[0])[1]
 ```
 
 ## soft-diffusion
