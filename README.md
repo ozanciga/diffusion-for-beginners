@@ -1,17 +1,17 @@
 # diffusion for beginners
 
-- implementation of _diffusion schedulers_ (currently sampling only) with minimal code & as faithful to the original work as i could. most recent work reuse or adopt code from previous work and build on it, or transcribe code from another framework - which is great! but i found it hard to follow at times. this is an attempt at simplifying below great papers. the trade-off is made between stability and correctness vs. brevity and simplicity.
+- implementation of _diffusion schedulers_ with minimal code & as faithful to the original work as i could. most recent work reuse or adopt code from previous work and build on it, or transcribe code from another framework - which is great! but i found it hard to follow at times. this is an attempt at simplifying below great papers. the trade-off is made between stability and correctness vs. brevity and simplicity.
 
 
 $$\large{\mathbf{{\color{green}feel\ free\ to\ contribute\ to\ the\ list\ below!}}}$$
 
-- [x] [dpm-solver++(2m)](samplers/dpmsolverplusplus.py) (lu et al. 2022), dpm-solver++: fast solver for guided sampling of diffusion probabilistic models, https://arxiv.org/abs/2211.01095
+- [x] [dpm-solver++(2m)](samplers/dpm_solver_plus_plus.py) (lu et al. 2022), dpm-solver++: fast solver for guided sampling of diffusion probabilistic models, https://arxiv.org/abs/2211.01095
 - [x] [exponential integrator](samplers/exponential_integrator.py) (zhang et al. 2022), fast sampling of diffusion models with exponential integrator, https://arxiv.org/abs/2204.13902
 - [x] [dpm-solver](samplers/dpm_solver.py) (lu et al. 2022), dpm-solver: a fast ode solver for diffusion probabilistic model sampling in around 10 steps, https://arxiv.org/abs/2206.00927
 - [x] [heun](samplers/heun.py) (karras et al. 2020), elucidating the design space of diffusion-based generative models, https://arxiv.org/abs/2206.00364
 - [x] [pndm](samplers/pndm.py) (ho et al. 2020), pseudo numerical methods for diffusion models, https://arxiv.org/abs/2202.09778
 - [x] [ddim](samplers/ddim.py) (song et al. 2020), denoising diffusion implicit models, https://arxiv.org/abs/2010.02502
-- [x] [improved ddpm](samplers/ddpm.py) (nichol and dhariwal 2021), improved denoising diffusion probabilistic models,https://arxiv.org/abs/2102.09672
+- [x] [improved ddpm](samplers/improved_ddpm.py) (nichol and dhariwal 2021), improved denoising diffusion probabilistic models,https://arxiv.org/abs/2102.09672
 - [x] [ddpm](samplers/ddpm.py) (ho et al. 2020), denoising diffusion probabilistic models, https://arxiv.org/abs/2006.11239
 
 
@@ -21,12 +21,12 @@ $$\large{\mathbf{{\color{green}feel\ free\ to\ contribute\ to\ the\ list\ below!
 
 <table>
  <tr>
-    <td><img src='images/exponential_integrator.jpg' height="256" width="256"></td>
     <td><img src='images/dpmsolverplusplus.jpg' height="256" width="256"></td>
+    <td><img src='images/exponential_integrator.jpg' height="256" width="256"></td>
  </tr>
  <tr>
-   <td><b style="font-size:20px">exponential integrator</b></td>
    <td><b style="font-size:20px">dpm-solver++</b></td>
+   <td><b style="font-size:20px">exponential integrator</b></td>
  </tr>
 </table>
 
